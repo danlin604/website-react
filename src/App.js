@@ -1,21 +1,36 @@
 import React, { Component } from 'react'
 import './App.css'
 import Header from './components/header'
+import Footer from './components/footer'
 
 class App extends Component {
+  constructor(props) {
+    super()
+    this.state = {
+      content: null
+    }
+  }
+
+  _content = (content) => {
+    switch(content) {
+      case 'resume':
+        return (
+          <h1>resume</h1>
+        )
+      case 'projects':
+        return (
+          <h1>projects</h1>
+        )
+    }
+  }
 
   render() {
     return (
       <main style={mainContainer}>
         <Header />
         <section style={contentContainer}>
-          
         </section>
-
-        <footer style={footerContainer}>
-            <aside>status: setup</aside>
-            <a href="https://github.com/danlin604">github</a>
-        </footer>
+        <Footer />
       </main>
     )
   }
@@ -33,12 +48,6 @@ const mainContainer = {
 const contentContainer = {
   flex: 1,
   display: 'flex',
-}
-
-const footerContainer = {
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor: 'white',
 }
 
 export default App

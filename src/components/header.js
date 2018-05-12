@@ -5,9 +5,9 @@ export default class Header extends Component {
     return (
       <header style={headerContainer}>
         <nav style={navContainer}>
-          <a style={navItem} onClick={() => console.log('hello')}>résumé</a>
-          <a style={navItem} href="">projects</a>
-          <a style={navItem} id='contact' href="">contact</a>
+          <a style={navItem} href="javascript:;" onClick={() => console.log('hello')}>résumé</a>
+          <a style={navItem} href="javascript:;">projects</a>
+          <a style={navItem} id='contact' href="javascript:;">contact</a>
         </nav>
       </header>
     )
