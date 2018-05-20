@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import env from './env'
+import env from '../env'
 
 export default class Header extends Component {
   constructor(props) {
