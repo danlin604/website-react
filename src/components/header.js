@@ -1,13 +1,40 @@
 import React, { Component } from 'react'
 
 export default class Header extends Component {
+  constructor(props) {
+    super()
+  }
+
   render() {
+    console.log('props ===>', this.props)
+
     return (
       <header style={headerContainer}>
         <nav style={navContainer}>
-          <a style={navItem} href="javascript:;" onClick={() => console.log('hello')}>résumé</a>
-          <a style={navItem} href="javascript:;">projects</a>
-          <a style={navItem} id='contact' href="javascript:;">contact</a>
+          <a
+            style={navItem}
+            href='javascript:;'
+            onClick={() => {
+              console.log('resume')
+              this.props._replaceContent('resume')
+            }}>
+            résumé
+          </a>
+          <a
+            style={navItem}
+            href='javascript:;'
+            onClick={() => {
+              console.log('projects')
+              this.props._replaceContent('projects')
+            }}>
+            projects
+          </a>
+          <a
+            style={navItem}
+            id='contact'
+            href='javascript:;'>
+            contact
+          </a>
         </nav>
       </header>
     )

@@ -2,33 +2,46 @@ import React, { Component } from 'react'
 import './App.css'
 import Header from './components/header'
 import Footer from './components/footer'
+import Resume from './components/resume'
 
 class App extends Component {
   constructor(props) {
     super()
     this.state = {
-      content: null
+      content: 'resume'
     }
+  }
+
+  _replaceContent = (content) => {
+    console.log(content)
+    if (!content) return
+    this.setState({ content })
   }
 
   _content = (content) => {
     switch(content) {
       case 'resume':
         return (
-          <h1>resume</h1>
+          <Resume />
         )
       case 'projects':
         return (
           <h1>projects</h1>
         )
+      default: {
+        <h1>content does not exist</h1>
+      }
     }
   }
 
   render() {
+    const { content } = this.state
+
     return (
       <main style={mainContainer}>
-        <Header />
+        <Header _replaceContent={this._replaceContent} />
         <section style={contentContainer}>
+          {this._content(content)}
         </section>
         <Footer />
       </main>
