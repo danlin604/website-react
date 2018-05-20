@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import env from './env'
 
 export default class Header extends Component {
   constructor(props) {
@@ -6,15 +7,14 @@ export default class Header extends Component {
   }
 
   render() {
-    console.log('props ===>', this.props)
-
     return (
       <header style={headerContainer}>
         <nav style={navContainer}>
           <a
             style={navItem}
-            href='javascript:;'
-            onClick={() => {
+            href=''
+            onClick={(e) => {
+              e.preventDefault()
               console.log('resume')
               this.props._replaceContent('resume')
             }}>
@@ -22,8 +22,9 @@ export default class Header extends Component {
           </a>
           <a
             style={navItem}
-            href='javascript:;'
-            onClick={() => {
+            href=''
+            onClick={(e) => {
+              e.preventDefault()
               console.log('projects')
               this.props._replaceContent('projects')
             }}>
@@ -32,7 +33,11 @@ export default class Header extends Component {
           <a
             style={navItem}
             id='contact'
-            href='javascript:;'>
+            href=''
+            onClick={(e) => {
+              e.preventDefault()
+              console.log('email')
+            }}>
             contact
           </a>
         </nav>

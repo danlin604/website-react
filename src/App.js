@@ -4,6 +4,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import Resume from './components/resume'
 
+
 class App extends Component {
   constructor(props) {
     super()
@@ -29,7 +30,7 @@ class App extends Component {
           <h1>projects</h1>
         )
       default: {
-        <h1>content does not exist</h1>
+        console.log('no content')
       }
     }
   }
