@@ -1,5 +1,5 @@
 const env = {
-  EMAIL: 'myemail@gmail.com',
+  EMAIL: 'livtqv604@ouiqt.kwu',
 }
 
 export default {

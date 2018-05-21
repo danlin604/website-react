@@ -4,6 +4,47 @@ import env from '../env'
 export default class Header extends Component {
   constructor(props) {
     super()
+    this.state = {
+      email: 'contact'
+    }
+  }
+
+  _deobfuscate = (str) => {
+    let cpy = str
+    for (let i = 0; i < 8; i++) {
+      cpy = cpy.replace(/[a-z]/gi, (char) => {
+        return String.fromCharCode(char.charCodeAt() - 1)
+      })
+    }
+    this.setState({ email: cpy })
+  }
+
+  _contact = () => {
+    const { email } = this.state
+    if (email && email !== 'contact') {
+      const _href = `mailto:${email}`
+      return (
+        <a
+          style={navItem}
+          id='contact'
+          href={_href}>
+          {email}
+        </a>
+      )
+    }
+
+    return (
+      <a
+        style={navItem}
+        id='contact'
+        href=''
+        onClick={(e) => {
+          e.preventDefault()
+          this._deobfuscate(env.EMAIL)
+        }}>
+        contact
+      </a>
+    )
   }
 
   render() {
@@ -30,16 +71,7 @@ export default class Header extends Component {
             }}>
             projects
           </a>
-          <a
-            style={navItem}
-            id='contact'
-            href=''
-            onClick={(e) => {
-              e.preventDefault()
-              console.log('email')
-            }}>
-            contact
-          </a>
+          {this._contact()}
         </nav>
       </header>
     )
