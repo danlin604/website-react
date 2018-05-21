@@ -3,6 +3,7 @@ import './App.css'
 import Header from './components/header'
 import Footer from './components/footer'
 import Resume from './components/resume'
+import Projects from './components/projects'
 
 
 class App extends Component {
@@ -14,7 +15,6 @@ class App extends Component {
   }
 
   _replaceContent = (content) => {
-    console.log(content)
     if (!content) return
     this.setState({ content })
   }
@@ -27,7 +27,7 @@ class App extends Component {
         )
       case 'projects':
         return (
-          <h1>projects</h1>
+          <Projects />
         )
       default: {
         console.log('no content')
