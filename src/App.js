@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import './App.css'
 import Header from './components/header'
-import Footer from './components/footer'
+// import Footer from './components/footer'
 import Resume from './components/resume'
 import Projects from './components/projects'
 
@@ -44,7 +43,7 @@ class App extends Component {
         <section style={contentContainer}>
           {this._content(content)}
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     )
   }
@@ -55,13 +54,12 @@ const mainContainer = {
   flex: 1,
   flexDirection: 'column',
   justifyContent: 'space-between',
-  backgroundColor: '#dedede',
-  color: '#4c4c4c',
 }
 
 const contentContainer = {
   flex: 1,
   display: 'flex',
+  justifyContent: 'center',
 }
 
 export default App

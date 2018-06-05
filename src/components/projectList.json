@@ -1,0 +1,16 @@
+{
+  "projects": [
+    {
+      "name": "terminal",
+      "description": "js playpen"
+    },
+    {
+      "name": "pale blue dot",
+      "description": "carl sagan tribute"
+    },
+    {
+      "name": "design system",
+      "description": "unified design"
+    }
+  ]
+}

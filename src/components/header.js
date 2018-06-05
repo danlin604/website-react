@@ -56,7 +56,6 @@ export default class Header extends Component {
             href=''
             onClick={(e) => {
               e.preventDefault()
-              console.log('resume')
               this.props._replaceContent('resume')
             }}>
             résumé
@@ -66,7 +65,6 @@ export default class Header extends Component {
             href=''
             onClick={(e) => {
               e.preventDefault()
-              console.log('projects')
               this.props._replaceContent('projects')
             }}>
             projects
@@ -82,7 +80,6 @@ const headerContainer = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
-  //backgroundColor: 'red',
 }
 
 const navContainer = {
@@ -92,9 +89,8 @@ const navContainer = {
 
 const navItem = {
   padding: 8,
-  fontSize: 32,
-  color: '#4c4c4c',
+  fontSize: 16,
+  color: 'rgb(1, 1, 1)',
   textDecoration: 'none',
   cursor: 'hand',
-  //backgroundColor: 'teal',
 }
