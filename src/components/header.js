@@ -80,6 +80,7 @@ const headerContainer = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
+  //backgroundColor: 'rgba(0,0,0,0.8)'
 }
 
 const navContainer = {
@@ -90,7 +91,7 @@ const navContainer = {
 const navItem = {
   padding: 8,
   fontSize: 16,
-  color: 'rgb(1, 1, 1)',
+  color: 'rgba(0,0,0,0.8)',
   textDecoration: 'none',
   cursor: 'hand',
 }

@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import uuidv4 from 'uuid/v4'
+import P5Wrapper from 'react-p5-wrapper'
 import projectList from './projectList'
+import './projects.css'
+
+const TILE_SIZE = 200
 
 export default class Projects extends Component {
   constructor(props) {
@@ -19,8 +23,11 @@ export default class Projects extends Component {
           key={uuidv4()}
           style={projectContainer}
         >
-          <header>{name}</header>
-          <p>{description}</p>
+          <header style={header}>
+            {name}
+            <p>{description}</p>
+          </header>
+          <P5Wrapper sketch={sketch} />
         </article>
       )
     })
@@ -30,14 +37,6 @@ export default class Projects extends Component {
   render() {
     return (
       <nav style={mainContainer}>
-
-        <section>
-          <article>
-            <p>Hey again,</p>
-            <p>Here are some of my projects. You can find more over at Github!</p>
-          </article>
-        </section>
-
         <section style={projectListContainer}>
           {this._list()}
         </section>
@@ -50,18 +49,45 @@ const mainContainer = {
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'flex-start',
+  justifyContent: 'center',
 }
 
 const projectListContainer = {
   flex: 1,
   display: 'flex',
+  flexWrap: 'wrap',
   flexDirection: 'row',
-  backgroundColor: 'pink',
+  justifyContent: 'center',
+  alignItems: 'center',
 }
 
 const projectContainer = {
-  height: 100,
-  width: 100,
-  backgroundColor: 'teal',
+  position: 'relative',
+  height: TILE_SIZE,
+  width: TILE_SIZE,
+  marginTop: 32,
+  marginLeft: 32,
+  marginRight: 32,
+  borderRadius: 32,
+  backgroundColor: 'rgba(1,1,1, 0)',
+  overflow: 'hidden',
+}
+
+const header = {
+  // display: 'flex',
+  // flexDirection: 'column',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-start',
+  height: TILE_SIZE - 32,
+  width: TILE_SIZE - 32,
+  backgroundColor: 'rgba(0,0,0,0)',
+  padding: 16,
+  color: 'rgb(255,255,255)',
+  zIndex: 1,
+}
+
+function sketch (p) {
+  p.setup = () => {
+    p.createCanvas(TILE_SIZE, TILE_SIZE, p.WEBGL)
+  }
 }

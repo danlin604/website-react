@@ -22,13 +22,13 @@ export default class Resume extends Component {
         <section>
           <article>
             <p>
-              <strong>Working Knowledge:</strong><br />
+              <strong>Working Knowledge</strong><br />
               JavaScript, PostgreSQL, React Native, React, Android, CSS3, Git, HTML5, Java, Node.js, T-SQL
             </p>
           </article>
           <article>
             <p>
-              <strong>Basic Knowledge:</strong><br />
+              <strong>Basic Knowledge</strong><br />
               AWS, Agile, Angular, C, C++, C#, Code Igniter, JIRA, jQuery, Linux, MySQL, PHP, SVN, Mocha, Jasmine, JUnit, Tableau, Power BI
             </p>
           </article>
@@ -67,4 +67,5 @@ const mainContainer = {
   justifyContent: 'flex-start',
   maxWidth: 540,
   paddingTop: 32,
+  color: 'rgba(0,0,0,0.8)',
 }
