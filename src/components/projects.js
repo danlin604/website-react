@@ -69,6 +69,7 @@ const projectContainer = {
   marginLeft: 32,
   marginRight: 32,
   borderRadius: 32,
+  WebkitBorderRadius: 32,
   backgroundColor: 'rgba(1,1,1, 0)',
   overflow: 'hidden',
 }

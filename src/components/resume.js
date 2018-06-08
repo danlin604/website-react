@@ -61,11 +61,9 @@ export default class Resume extends Component {
 }
 
 const mainContainer = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'flex-start',
   maxWidth: 540,
   paddingTop: 32,
+  paddingLeft: 16,
+  paddingRight: 16,
   color: 'rgba(0,0,0,0.8)',
 }
