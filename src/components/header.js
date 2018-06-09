@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import env from '../env'
 
 export default class Header extends Component {
@@ -25,7 +26,6 @@ export default class Header extends Component {
       const _href = `mailto:${email}`
       return (
         <a
-          style={navItem}
           id='contact'
           href={_href}>
           {email}
@@ -35,7 +35,6 @@ export default class Header extends Component {
 
     return (
       <a
-        style={navItem}
         id='contact'
         href=''
         onClick={(e) => {
@@ -49,49 +48,46 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header style={headerContainer}>
-        <nav style={navContainer}>
+      <HeaderContainer>
+        <nav>
           <a
-            style={navItem}
             href=''
             onClick={(e) => {
               e.preventDefault()
-              this.props._replaceContent('resume')
+              this.props.replaceContent('resume')
             }}>
             résumé
           </a>
           <a
-            style={navItem}
             href=''
             onClick={(e) => {
               e.preventDefault()
-              this.props._replaceContent('projects')
+              this.props.replaceContent('projects')
             }}>
             projects
           </a>
           {this._contact()}
         </nav>
-      </header>
+      </HeaderContainer>
     )
   }
 }
 
-const headerContainer = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-  //backgroundColor: 'rgba(0,0,0,0.8)'
-}
+const HeaderContainer = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 
-const navContainer = {
-  display: 'flex',
-  flex: 1,
-}
+  nav {
+    flex: 1;
+    display: flex;
+  }
 
-const navItem = {
-  padding: 8,
-  fontSize: 16,
-  color: 'rgba(0,0,0,0.8)',
-  textDecoration: 'none',
-  cursor: 'hand',
-}
+  nav a {
+    padding: 8px;
+    font-size: 16px;
+    color: rgba(0,0,0,0.8);
+    text-decoration: none;
+    cursor: hand;
+  }
+`

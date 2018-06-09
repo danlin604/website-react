@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import Header from './components/header'
-// import Footer from './components/footer'
 import Resume from './components/resume'
 import Projects from './components/projects'
-
 
 class App extends Component {
   constructor(props) {
@@ -38,28 +37,26 @@ class App extends Component {
     const { content } = this.state
 
     return (
-      <main style={mainContainer}>
-        <Header _replaceContent={this._replaceContent} />
-        <section style={contentContainer}>
+      <MainContainer>
+        <Header replaceContent={this._replaceContent} />
+        <Content>
           {this._content(content)}
-        </section>
-        {/* <Footer /> */}
-      </main>
+        </Content>
+      </MainContainer>
     )
   }
 }
 
-const mainContainer = {
-  display: 'flex',
-  flex: 1,
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-}
-
-const contentContainer = {
-  flex: 1,
-  display: 'flex',
-  justifyContent: 'center',
-}
+const MainContainer = styled.main`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+const Content = styled.section`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+`
 
 export default App

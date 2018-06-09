@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import uuidv4 from 'uuid/v4'
 import P5Wrapper from 'react-p5-wrapper'
 import projectList from './projectList'
-import './projects.css'
+
 
 const TILE_SIZE = 200
 
@@ -19,16 +20,13 @@ export default class Projects extends Component {
     const listProjects = projects.map((project) => {
       const { name, description } = project
       return (
-        <article 
-          key={uuidv4()}
-          style={projectContainer}
-        >
-          <header style={header}>
+        <ItemContainer key={uuidv4()}>
+          <header>
             {name}
             <p>{description}</p>
           </header>
           <P5Wrapper sketch={sketch} />
-        </article>
+        </ItemContainer>
       )
     })
     return listProjects || null
@@ -36,56 +34,65 @@ export default class Projects extends Component {
 
   render() {
     return (
-      <nav style={mainContainer}>
-        <section style={projectListContainer}>
+      <Main>
+        <ListContainer>
           {this._list()}
-        </section>
-      </nav>
+        </ListContainer>
+      </Main>
     )
   }
 }
 
-const mainContainer = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-}
+const Main = styled.nav`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+const ListContainer = styled.section`
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+const ItemContainer = styled.article`
+  position: relative;
+  height: ${TILE_SIZE}px;
+  width: ${TILE_SIZE}px;
+  margin-top: 32px;
+  margin-left: 32px;
+  margin-right: 32px;
+  border-radius: 32px;
+  overflow: hidden;
 
-const projectListContainer = {
-  flex: 1,
-  display: 'flex',
-  flexWrap: 'wrap',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
+  div {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: ${TILE_SIZE}px;
+    width: ${TILE_SIZE}px;
+  }
 
-const projectContainer = {
-  position: 'relative',
-  height: TILE_SIZE,
-  width: TILE_SIZE,
-  marginTop: 32,
-  marginLeft: 32,
-  marginRight: 32,
-  borderRadius: 32,
-  WebkitBorderRadius: 32,
-  backgroundColor: 'rgba(1,1,1, 0)',
-  overflow: 'hidden',
-}
+  canvas {
+    flex: 1;
+    background-color: rgba(138,43,226,1);
+  }
 
-const header = {
-  // display: 'flex',
-  // flexDirection: 'column',
-  justifyContent: 'flex-start',
-  alignItems: 'flex-start',
-  height: TILE_SIZE - 32,
-  width: TILE_SIZE - 32,
-  backgroundColor: 'rgba(0,0,0,0)',
-  padding: 16,
-  color: 'rgb(255,255,255)',
-  zIndex: 1,
-}
+  header {
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: ${TILE_SIZE - 32}px;
+    width: ${TILE_SIZE - 32}px;
+    background-color: rgba(0,0,0,0.1);
+    padding: 16px;
+    color: rgb(255,255,255);
+    z-index: 1;
+  }
+`
 
 function sketch (p) {
   p.setup = () => {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 export default class Resume extends Component {
   render() {
     return (
-      <section style={mainContainer}>
-
+      <ResumeContainer>
         <section>
           <h2>hello world!</h2>
         </section>
@@ -55,15 +55,15 @@ export default class Resume extends Component {
             </p>
           </article>
         </section>
-      </section>
+      </ResumeContainer>
     )
   }
 }
 
-const mainContainer = {
-  maxWidth: 540,
-  paddingTop: 32,
-  paddingLeft: 16,
-  paddingRight: 16,
-  color: 'rgba(0,0,0,0.8)',
-}
+const ResumeContainer = styled.section`
+  max-width: 540px;
+  padding-top: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: rgba(0,0,0,0.8)
+`
