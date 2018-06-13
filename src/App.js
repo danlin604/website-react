@@ -14,6 +14,7 @@ class App extends Component {
 
   _replaceContent = (content) => {
     if (!content) return
+    if (content === this.state.content) return
     this.setState({ content })
   }
 
