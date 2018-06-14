@@ -1,0 +1,14 @@
+{
+  "projects": [
+    {
+      "path": "Carl",
+      "name": "pale blue dot",
+      "description": "tribute to carl sagan (under revamp)"
+    },
+    {
+      "name": "terminal",
+      "description": "js terminal (under revamp)"
+    },
+    {},{},{}
+  ]
+}

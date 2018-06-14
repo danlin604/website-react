@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import Header from './components/header'
-import Resume from './components/resume'
-import Projects from './components/projects'
+import Header from './components/Header'
+import Resume from './components/Resume'
+import Projects from './components/Projects'
 
 class App extends Component {
   constructor(props) {
