@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const TILE_SIZE = 200
 
 export default class Project extends Component {
   constructor(props) {
     super(props)
-    this.state = { module: null }
+    this.state = {
+      module: null,
+      hover: false,
+    }
   }
 
   componentDidMount() {
@@ -32,11 +35,23 @@ export default class Project extends Component {
     return <Component />
   }
 
+  _itemHover = () => {
+    this.setState({ hover: true })
+  }
+
   render() {
     const { name, description } = this.props
     
     return (
-      <ItemContainer>
+      <ItemContainer
+        onMouseEnter={() => {
+          this.setState({ hover: true })
+        }}
+        onMouseLeave={() => {
+          this.setState({ hover: false })
+        }}
+        hover={this.state.hover}
+      >
         <header>
           {name || 'placeholder'}
           <p>{description || 'Lorem ipsum dolor sit amet'}</p>
@@ -48,6 +63,7 @@ export default class Project extends Component {
 }
 
 const ItemContainer = styled.article`
+  /* static styles */
   position: relative;
   height: ${TILE_SIZE}px;
   width: ${TILE_SIZE}px;
@@ -56,6 +72,13 @@ const ItemContainer = styled.article`
   margin-right: 32px;
   border-radius: 32px;
   overflow: hidden;
+  cursor: pointer;
+
+  ${ props => props.hover ?
+    css`
+      transform: scale(1.1);
+    `
+  : null}
 
   div {
     z-index: -1;
@@ -65,7 +88,7 @@ const ItemContainer = styled.article`
     height: ${TILE_SIZE}px;
     width: ${TILE_SIZE}px;
     border-radius: 32px;
-    background-color: blueviolet;
+    background-color: paleturquoise;
     overflow: hidden;
   }
 
