@@ -9,7 +9,6 @@ export default class Project extends Component {
     this.state = {
       module: null,
       hover: false,
-      size: 200,
     }
   }
 
@@ -40,14 +39,13 @@ export default class Project extends Component {
     this.setState({ hover: true })
   }
 
-  _expandProject = () => {
-    console.log('project clicked!')
-  }
-
   render() {
-    const { name, description } = this.props
+    const { name, description, expand } = this.props
+
+    console.log(this.props)
     
     return (
+      
       <ItemContainer
         onMouseEnter={() => {
           this.setState({ hover: true })
@@ -56,7 +54,7 @@ export default class Project extends Component {
           this.setState({ hover: false })
         }}
         onClick={() => {
-          this._expandProject()
+          expand()
         }}
         hover={this.state.hover}
       >

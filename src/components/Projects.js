@@ -9,7 +9,12 @@ export default class Projects extends Component {
     super(props)
     this.state = {
       projects: (ProjectList || {}).projects || {},
+      expand: false,
     }
+  }
+
+  _expand = () => {
+    this.setState({ expand: true })
   }
 
   _list = () => {
@@ -22,17 +27,24 @@ export default class Projects extends Component {
           path={path}
           name={name}
           description={description}
+          expand={this._expand}
         />
       )
     })
+
     return list || null
   }
 
   render() {
     return (
       <Main>
+        { this.state.expand &&
+          <ProjectOverlay
+            onClick={() => this.setState({ expand: false })}
+          />
+        }
         <ListContainer>
-          {this._list()}
+          { this._list() }
         </ListContainer>
       </Main>
     )
@@ -40,17 +52,35 @@ export default class Projects extends Component {
 }
 
 const Main = styled.nav`
-  flex: 1;
-  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 const ListContainer = styled.section`
-  flex: 1;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+`
+
+const ProjectOverlay = styled.section`
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  animation: fadein 2s;
+
+  @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
 `
