@@ -42,10 +42,7 @@ export default class Project extends Component {
   render() {
     const { name, description, expand } = this.props
 
-    console.log(this.props)
-    
     return (
-      
       <ItemContainer
         onMouseEnter={() => {
           this.setState({ hover: true })

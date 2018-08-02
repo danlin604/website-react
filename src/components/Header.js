@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import env from '../env'
 
+const Nav = {
+  RESUME: Symbol('RESUME'),
+  PROJECTS: Symbol('PROJECTS'),
+}
+
 export default class Header extends Component {
   constructor(props) {
     super()
     this.state = {
-      email: 'contact'
+      selected: Nav.RESUME,
+      email: 'contact',
     }
   }
 
@@ -55,7 +61,9 @@ export default class Header extends Component {
             onClick={(e) => {
               e.preventDefault()
               this.props.replaceContent('resume')
-            }}>
+              this.setState({ selected: Nav.RESUME })
+            }}
+            style={{ textDecoration: (this.state.selected === Nav.RESUME) ? 'underline' : 'none' }}>
             résumé
           </a>
           <a
@@ -63,7 +71,9 @@ export default class Header extends Component {
             onClick={(e) => {
               e.preventDefault()
               this.props.replaceContent('projects')
-            }}>
+              this.setState({ selected: Nav.PROJECTS })
+            }}
+            style={{ textDecoration: (this.state.selected === Nav.PROJECTS) ? 'underline' : 'none' }}>
             projects
           </a>
           {this._contact()}
