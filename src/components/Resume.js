@@ -29,7 +29,7 @@ export default class Resume extends Component {
           <article>
             <p>
               <strong>Basic Knowledge</strong><br />
-              AWS, Agile, Angular, C, C++, C#, Code Igniter, JIRA, jQuery, Linux, MySQL, PHP, SVN, Mocha, Jasmine, JUnit, Tableau, Power BI
+              AWS, Agile, Angular, C, C++, C#, Code Igniter, JIRA, jQuery, Linux, MySQL, PHP, SVN, Mocha, Jasmine, JUnit, Tableau, Power BI, Rust
             </p>
           </article>
         </section>

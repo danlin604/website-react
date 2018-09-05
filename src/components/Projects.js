@@ -1,50 +1,54 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import uuidv4 from 'uuid/v4'
-import Project from './Project'
-import ProjectList from './projects/ProjectList'
+// import uuidv4 from 'uuid/v4'
+import TileHOC from './TileHOC'
+import CarlTile from './projects/CarlTile'
+// import Carl from './projects/Carl';
+// import Carl from './projects/Carl'
+
+const Tile = TileHOC(CarlTile)
+const Placeholder = TileHOC()
 
 export default class Projects extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      projects: (ProjectList || {}).projects || {},
       expand: false,
+      carl: false,
     }
   }
 
-  _expand = () => {
-    this.setState({ expand: true })
-  }
-
-  _list = () => {
-    const { projects } = this.state
-    const list = projects.map((project) => {
-      const { path, name, description } = project
-      return (
-        <Project
-          key={uuidv4()}
-          path={path}
-          name={name}
-          description={description}
-          expand={this._expand}
-        />
-      )
-    })
-
-    return list || null
+  expand = (state) => {
+    console.log(state)
+    if (!state) return
+    this.setState(state)
   }
 
   render() {
     return (
       <Main>
-        { this.state.expand &&
+        {
+          this.state.expand &&
           <ProjectOverlay
-            onClick={() => this.setState({ expand: false })}
-          />
+            onClick={() => {
+              this.setState({ expand: false })
+            }}
+          >
+            {
+              this.state.carl &&
+              <div></div>
+            }
+          </ProjectOverlay>
         }
+
         <ListContainer>
-          { this._list() }
+          <Tile
+            name={'pale blue dot'}
+            description={'tribute to carl sagan (under revamp)'}
+            expand={this.expand}
+          />
+          <Placeholder />
+          <Placeholder />
         </ListContainer>
       </Main>
     )
@@ -76,11 +80,21 @@ const ProjectOverlay = styled.section`
   z-index: 2;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
   animation: fadein 2s;
 
   @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+  }
+
+  div {
+    width: 80%;
+    height: 80%;
+    background-color: white;
   }
 `
