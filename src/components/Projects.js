@@ -43,7 +43,7 @@ export default class Projects extends Component {
         <ListContainer>
           <Tile
             name={'pale blue dot'}
-            description={'tribute to carl sagan (under revamp)'}
+            description={'a tribute to carl sagan'}
             expand={this.expand}
           />
           <Placeholder />
@@ -79,21 +79,15 @@ const ProjectOverlay = styled.section`
   z-index: 2;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0,0,0,0.5);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  background-color: rgba(0,0,0,0);
   animation: fadein 2s;
 
   @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
   }
-
-  /* div {
-    width: 80%;
-    height: 80%;
-    background-color: white;
-  } */
 `
