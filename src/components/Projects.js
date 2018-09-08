@@ -3,8 +3,7 @@ import styled from 'styled-components'
 // import uuidv4 from 'uuid/v4'
 import TileHOC from './TileHOC'
 import CarlTile from './projects/CarlTile'
-// import Carl from './projects/Carl';
-// import Carl from './projects/Carl'
+import Carl from './projects/Carl'
 
 const Tile = TileHOC(CarlTile)
 const Placeholder = TileHOC()
@@ -36,7 +35,7 @@ export default class Projects extends Component {
           >
             {
               this.state.carl &&
-              <div></div>
+              <Carl />
             }
           </ProjectOverlay>
         }
@@ -92,9 +91,9 @@ const ProjectOverlay = styled.section`
     to   { opacity: 1; }
   }
 
-  div {
+  /* div {
     width: 80%;
     height: 80%;
     background-color: white;
-  }
+  } */
 `
