@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import saturn_png from '../../images/saturn_s.svg'
+// import carl_audio from '../../audio/quote.mp3'
 
 const Carl = () => {
   return (
@@ -27,7 +28,10 @@ const Carl = () => {
       </Window>
 
       <LabelBox>
-        <p>Carl Sagan</p>
+        <p>Carl Sagan (1934-1996)</p>
+        {/* <audio controls autoPlay loop>
+          <source src={carl_audio} type='audio/mpeg' />
+        </audio> */}
       </LabelBox>
     </Main>
   )

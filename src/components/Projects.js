@@ -18,7 +18,6 @@ export default class Projects extends Component {
   }
 
   expand = (state) => {
-    console.log(state)
     if (!state) return
     this.setState(state)
   }

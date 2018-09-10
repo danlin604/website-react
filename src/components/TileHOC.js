@@ -12,6 +12,13 @@ const TileHOC = (WrappedComponent) => {
       }
     }
 
+    showWrappedComponent = () => {
+      if (WrappedComponent) {
+        return <WrappedComponent {...this.props} />
+      }
+      return <div></div>
+    }
+
     render() {
       const { name, description, expand } = this.props
       return (
@@ -34,9 +41,7 @@ const TileHOC = (WrappedComponent) => {
             {name || 'placeholder'}
             <p>{description || 'Lorem ipsum dolor sit amet'}</p>
           </header>
-            { WrappedComponent &&
-              <WrappedComponent {...this.props} />
-            }
+          { this.showWrappedComponent() }
         </ItemContainer>
       )
     }
