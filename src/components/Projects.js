@@ -1,39 +1,30 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-// import uuidv4 from 'uuid/v4'
 import TileHOC from './TileHOC'
 import CarlTile from './projects/CarlTile'
 import Carl from './projects/Carl'
+import { connect } from 'react-redux'
+import { loadProject, closeProject } from '../actions'
 
 const Tile = TileHOC(CarlTile)
 const Placeholder = TileHOC()
 
-export default class Projects extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      expand: false,
-      carl: false,
-    }
-  }
-
-  expand = (state) => {
-    if (!state) return
-    this.setState(state)
-  }
-
+class Projects extends Component {
   render() {
+    const {
+      toggle,
+      project,
+      _loadProject,
+      _closeProject,
+    } = this.props
     return (
       <Main>
         {
-          this.state.expand &&
+          toggle &&
           <ProjectOverlay
-            onClick={() => {
-              this.setState({ expand: false })
-            }}
+            onClick={() => _closeProject()}
           >
-            {
-              this.state.carl &&
+            { project === 'CARL' &&
               <Carl />
             }
           </ProjectOverlay>
@@ -43,7 +34,7 @@ export default class Projects extends Component {
           <Tile
             name={'pale blue dot'}
             description={'a tribute to carl sagan'}
-            expand={this.expand}
+            load={_loadProject}
           />
           <Placeholder />
           <Placeholder />
@@ -52,6 +43,30 @@ export default class Projects extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    _loadProject: project => {
+      dispatch(loadProject(project))
+    },
+    _closeProject: () => dispatch(closeProject())
+  }
+}
+
+const mapStateToProps = (state) => {
+  const { project, toggle } = (state || {}).projectReducer
+
+  return {
+    ...(project) && { project },
+    toggle,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Projects)
+
 
 const Main = styled.nav`
   position: relative;
@@ -78,10 +93,6 @@ const ProjectOverlay = styled.section`
   z-index: 2;
   width: 100%;
   height: 100%;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: center; */
   background-color: rgba(0,0,0,0);
   animation: fadein 2s;
 

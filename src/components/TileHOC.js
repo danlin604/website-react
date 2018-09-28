@@ -3,14 +3,8 @@ import styled, { css } from 'styled-components'
 
 const TILE_SIZE = 200
 
-const TileHOC = (WrappedComponent) => {
+export const TileHOC = (WrappedComponent) => {
   return class TileHOC extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        hover: false,
-      }
-    }
 
     showWrappedComponent = () => {
       if (WrappedComponent) {
@@ -20,22 +14,17 @@ const TileHOC = (WrappedComponent) => {
     }
 
     render() {
-      const { name, description, expand } = this.props
+      const { name, description, load } = this.props
       return (
         <ItemContainer
-          onMouseEnter={() => {
-            if (expand) this.setState({ hover: true })
-          }}
-          onMouseLeave={() => {
-            if (expand) this.setState({ hover: false })
-          }}
-          onClick={() => {
-            if (expand) expand({
-              expand: true,
-              carl: true
-            })
-          }}
-          hover={this.state.hover}
+          // onMouseEnter={() => {
+          //   if (expand) this.setState({ hover: true })
+          // }}
+          // onMouseLeave={() => {
+          //   if (expand) this.setState({ hover: false })
+          // }}
+          onClick={() => load && load('CARL')}
+          // hover={this.state.hover}
         >
           <header>
             {name || 'placeholder'}
@@ -60,11 +49,11 @@ const ItemContainer = styled.article`
   overflow: hidden;
   cursor: pointer;
 
-  ${ props => props.hover ?
+  /* ${ props => props.hover ?
     css`
       transform: scale(1.1);
     `
-  : null}
+  : null} */
 
   div {
     z-index: -1;

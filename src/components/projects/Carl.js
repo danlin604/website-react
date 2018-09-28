@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import saturn_png from '../../images/saturn_s.svg'
-// import carl_audio from '../../audio/quote.mp3'
+import saturn_png from '../../images/saturn_s.png'
 
 const Carl = () => {
   return (
@@ -36,6 +35,8 @@ const Carl = () => {
     </Main>
   )
 }
+
+export default Carl
 
 const Main = styled.div`
   display: flex;
@@ -264,5 +265,3 @@ const Saturn = styled.img`
   left: -20em;
   z-index: 4;
 `
-
-export default Carl
