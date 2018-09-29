@@ -10,12 +10,12 @@ const Tile = TileHOC(CarlTile)
 const Placeholder = TileHOC()
 
 class Projects extends Component {
-  render() {
+  render () {
     const {
       toggle,
       project,
       _loadProject,
-      _closeProject,
+      _closeProject
     } = this.props
     return (
       <Main>
@@ -58,7 +58,7 @@ const mapStateToProps = (state) => {
 
   return {
     ...(project) && { project },
-    toggle,
+    toggle
   }
 }
 
@@ -66,7 +66,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Projects)
-
 
 const Main = styled.nav`
   position: relative;
