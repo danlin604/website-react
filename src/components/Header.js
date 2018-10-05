@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import env from '../env'
-
-const Nav = {
-  RESUME: Symbol('RESUME'),
-  PROJECTS: Symbol('PROJECTS'),
-}
+import { NavLink } from 'react-router-dom'
 
 export default class Header extends Component {
-  constructor(props) {
-    super()
-    this.state = {
-      selected: Nav.RESUME,
-      email: 'contact',
-    }
-  }
+  state = { email: 'contact' }
 
   _deobfuscate = (str) => {
     let cpy = str
@@ -56,26 +46,19 @@ export default class Header extends Component {
     return (
       <HeaderContainer>
         <nav>
-          <a
-            href=''
-            onClick={(e) => {
-              e.preventDefault()
-              this.props.replaceContent('resume')
-              this.setState({ selected: Nav.RESUME })
+          <NavLink
+            exact
+            to='/'
+            activeStyle={{
+              textDecoration: 'underline'
             }}
-            style={{ textDecoration: (this.state.selected === Nav.RESUME) ? 'underline' : 'none' }}>
-            résumé
-          </a>
-          <a
-            href=''
-            onClick={(e) => {
-              e.preventDefault()
-              this.props.replaceContent('projects')
-              this.setState({ selected: Nav.PROJECTS })
+          >résumé</NavLink>
+          <NavLink
+            to='/projects'
+            activeStyle={{
+              textDecoration: 'underline'
             }}
-            style={{ textDecoration: (this.state.selected === Nav.PROJECTS) ? 'underline' : 'none' }}>
-            projects
-          </a>
+          >projects</NavLink>
           {this._contact()}
         </nav>
       </HeaderContainer>

@@ -11,7 +11,7 @@ export default class Resume extends Component {
 
         <section>
           <article>
-            <p>My name is Dan and I am a software developer. JavaScript is my latest passion. There is little else that I enjoy more than to sit down, and grok new ideas. I'll be updating this website in my spare time, so be sure to check back occasioanlly for new content!</p>
+            <p>{`My name is Dan and I am a software developer. JavaScript is my latest passion. There is little else that I enjoy more than to sit down, and grok new ideas. I'll be updating this website in my spare time, so be sure to check back occasioanlly for new content!`}</p>
           </article>
         </section>
 
