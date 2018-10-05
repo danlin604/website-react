@@ -17,14 +17,7 @@ export const TileHOC = (WrappedComponent) => {
       const { name, description, load } = this.props
       return (
         <ItemContainer
-          // onMouseEnter={() => {
-          //   if (expand) this.setState({ hover: true })
-          // }}
-          // onMouseLeave={() => {
-          //   if (expand) this.setState({ hover: false })
-          // }}
           onClick={() => load && load('CARL')}
-          // hover={this.state.hover}
         >
           <header>
             {name || 'placeholder'}
@@ -53,7 +46,7 @@ const ItemContainer = styled.article`
     css`
       transform: scale(1.1);
     `
-  : null} */
+    : null} */
 
   div {
     z-index: -1;

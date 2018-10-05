@@ -5,18 +5,21 @@ import CarlTile from './projects/CarlTile'
 import Carl from './projects/Carl'
 import { connect } from 'react-redux'
 import { loadProject, closeProject } from '../actions'
+import PropTypes from 'prop-types'
 
 const Tile = TileHOC(CarlTile)
 const Placeholder = TileHOC()
 
 class Projects extends Component {
-  render() {
+
+  render () {
     const {
       toggle,
       project,
       _loadProject,
-      _closeProject,
+      _closeProject
     } = this.props
+
     return (
       <Main>
         {
@@ -44,6 +47,18 @@ class Projects extends Component {
   }
 }
 
+Projects.defaultProps = {
+  toggle: false,
+  project: 'placeholder'
+}
+
+Projects.propTypes = {
+  toggle: PropTypes.bool,
+  project: PropTypes.string,
+  _loadProject: PropTypes.func,
+  _closeProject: PropTypes.func
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     _loadProject: project => {
@@ -58,7 +73,7 @@ const mapStateToProps = (state) => {
 
   return {
     ...(project) && { project },
-    toggle,
+    toggle
   }
 }
 
@@ -66,7 +81,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Projects)
-
 
 const Main = styled.nav`
   position: relative;
