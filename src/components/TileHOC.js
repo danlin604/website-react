@@ -5,7 +5,6 @@ const TILE_SIZE = 200
 
 export const TileHOC = (WrappedComponent) => {
   return class TileHOC extends Component {
-
     showWrappedComponent = () => {
       if (WrappedComponent) {
         return <WrappedComponent {...this.props} />
@@ -17,8 +16,7 @@ export const TileHOC = (WrappedComponent) => {
       const { name, description, load } = this.props
       return (
         <ItemContainer
-          onClick={() => load && load('CARL')}
-        >
+          onClick={() => load && load()} >
           <header>
             {name || 'placeholder'}
             <p>{description || 'Lorem ipsum dolor sit amet'}</p>
@@ -56,7 +54,7 @@ const ItemContainer = styled.article`
     height: ${TILE_SIZE}px;
     width: ${TILE_SIZE}px;
     border-radius: 32px;
-    background-color: paleturquoise;
+    /* background-color: paleturquoise; */
     overflow: hidden;
   }
 
