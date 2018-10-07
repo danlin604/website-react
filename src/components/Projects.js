@@ -7,7 +7,11 @@ import { connect } from 'react-redux'
 import { loadProject, closeProject } from '../actions'
 import PropTypes from 'prop-types'
 
-const Tile = TileHOC(CarlTile)
+import HelloVR from './HelloVR'
+import HelloVRTile from './HelloVRTile'
+
+const CarlHOC = TileHOC(CarlTile)
+const HelloHOC = TileHOC(HelloVRTile)
 const Placeholder = TileHOC()
 
 class Projects extends Component {
@@ -27,18 +31,27 @@ class Projects extends Component {
           <ProjectOverlay
             onClick={() => _closeProject()}
           >
+
             { project === 'CARL' &&
               <Carl />
             }
+
+            { project === 'HELLO_VR' &&
+              <HelloVR />
+            }
+
           </ProjectOverlay>
         }
 
         <ListContainer>
-          <Tile
+          <CarlHOC
             name={'pale blue dot'}
             description={'a tribute to carl sagan'}
-            load={_loadProject}
-          />
+            load={() => _loadProject('CARL')} />
+          <HelloHOC
+            name={'hello a-frame!'}
+            description={'an a-frame example'}
+            load={() => _loadProject('HELLO_VR')} />
           <Placeholder />
           <Placeholder />
         </ListContainer>
