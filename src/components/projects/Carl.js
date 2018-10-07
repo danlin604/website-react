@@ -2,10 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import saturn_png from '../../images/saturn_s.png'
 
-const Carl = () => {
+const Carl = ({close}) => {
   return (
-    <Main>
-      <Window>
+    <Main
+      onClick={() => close && close()}>
+      <Window
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+        }}>
         <Sunbeam>
           <EarthBox>
             <Earth />

@@ -29,15 +29,15 @@ class Projects extends Component {
         {
           toggle &&
           <ProjectOverlay
-            onClick={() => _closeProject()}
+            // onClick={() => _closeProject()}
           >
 
             { project === 'CARL' &&
-              <Carl />
+              <Carl close={() => _closeProject()} />
             }
 
             { project === 'HELLO_VR' &&
-              <HelloVR />
+              <HelloVR close={() => _closeProject()} />
             }
 
           </ProjectOverlay>
