@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 export default class Header extends Component {
   state = { email: 'contact' }
 
-  _deobfuscate = (str) => {
+  deobfuscate = (str) => {
     let cpy = str
     for (let i = 0; i < 8; i++) {
       cpy = cpy.replace(/[a-z]/gi, (char) => {
@@ -16,7 +16,7 @@ export default class Header extends Component {
     this.setState({ email: cpy })
   }
 
-  _contact = () => {
+  contact = () => {
     const { email } = this.state
     if (email && email !== 'contact') {
       const _href = `mailto:${email}`
@@ -35,7 +35,7 @@ export default class Header extends Component {
         href=''
         onClick={(e) => {
           e.preventDefault()
-          this._deobfuscate(env.EMAIL)
+          this.deobfuscate(env.EMAIL)
         }}>
         contact
       </a>
@@ -49,17 +49,23 @@ export default class Header extends Component {
           <NavLink
             exact
             to='/'
-            activeStyle={{
-              textDecoration: 'underline'
-            }}
-          >résumé</NavLink>
+            activeStyle={{ textDecoration: 'underline' }}
+          >
+            résumé
+          </NavLink>
           <NavLink
             to='/projects'
-            activeStyle={{
-              textDecoration: 'underline'
-            }}
-          >projects</NavLink>
-          {this._contact()}
+            activeStyle={{ textDecoration: 'underline' }}
+          >
+            projects
+          </NavLink>
+          <NavLink
+            to='/blog'
+            activeStyle={{ textDecoration: 'underline' }}
+          >
+            blog
+          </NavLink>
+          {this.contact()}
         </nav>
       </HeaderContainer>
     )

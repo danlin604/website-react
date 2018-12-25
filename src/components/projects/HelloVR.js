@@ -3,7 +3,7 @@ import 'aframe'
 import { Entity, Scene } from 'aframe-react'
 import styled from 'styled-components'
 
-const HelloVR = ({close}) => (
+const HelloVR = ({ close }) => (
   <Main onClick={() => close && close()}>
     <Window
       onClick={(e) => {

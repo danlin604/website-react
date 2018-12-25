@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import TileHOC from './TileHOC'
 import CarlTile from './projects/CarlTile'
 import Carl from './projects/Carl'
+import HelloVR from './projects/HelloVR'
+import HelloVRTile from './projects/HelloVRTile'
 import { connect } from 'react-redux'
 import { loadProject, closeProject } from '../actions'
 import PropTypes from 'prop-types'
 
-import HelloVR from './HelloVR'
-import HelloVRTile from './HelloVRTile'
+
 
 const CarlHOC = TileHOC(CarlTile)
 const HelloHOC = TileHOC(HelloVRTile)

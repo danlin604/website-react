@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import saturn_png from '../../images/saturn_s.png'
 
-const Carl = ({close}) => {
+const Carl = ({ close }) => {
   return (
     <Main
       onClick={() => close && close()}>

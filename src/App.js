@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import Header from './components/Header'
 import Resume from './components/Resume'
 import Projects from './components/Projects'
+import Blog from './components/Blog'
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
+import { Article } from './components/articles/Article';
 
 class App extends Component {
   render() {
@@ -15,8 +17,10 @@ class App extends Component {
         <MainContainer>
           <Header />
           <Content>
-            <Route exact path="/" component={Resume}/>
-            <Route path="/projects" component={Projects}/>
+            <Route exact path='/' component={Resume}/>
+            <Route exact path='/projects' component={Projects}/>
+            <Route exact path='/blog' component={Blog}/>
+            <Route exact path='/why-clients-ought-encrypt-passwords' component={Article}/>
           </Content>
         </MainContainer>
       </Router>
